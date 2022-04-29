@@ -3,7 +3,7 @@ extends StaticBody
 enum SterlingState { SILENT, SPOKEN }
 
 var state = SterlingState.SILENT
-
+var should_look_at_lindy = true
 var cameraOffset = Vector3(0, 2.2, 0)
 
 func _ready():
@@ -15,12 +15,14 @@ func stop_idle():
 
 
 func _physics_process(delta):
-	var origin = Globals.lindy.global_transform.origin
-	var lindy_xz = Vector3.ZERO
-	lindy_xz.x = origin.x
-	lindy_xz.z = origin.z
-	lindy_xz.y = global_transform.origin.y
-	look_at(lindy_xz, Vector3.UP)
+	if should_look_at_lindy:
+		var origin = Globals.lindy.global_transform.origin
+		var lindy_xz = Vector3.ZERO
+		lindy_xz.x = origin.x
+		lindy_xz.z = origin.z
+		lindy_xz.y = global_transform.origin.y
+		look_at(lindy_xz, Vector3.UP)
+	
 	$Mesh/Torso/SterlingHead.look_at(Globals.lindy.global_transform.origin + cameraOffset, Vector3.UP)
 
 

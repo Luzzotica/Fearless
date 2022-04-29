@@ -27,8 +27,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7, 1.34, 1.95, 2.54, 3.15, 3.78, 4.31, 4.71, 5.09, 5.45, 5.78 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.7, 1.34, 1.95, 2.54, 3.15, 3.78, 4.31, 4.71, 5.09, 5.45, 5.78, 9.01 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "open_next_chest"
@@ -65,6 +65,9 @@ tracks/0/keys = {
 }, {
 "args": [  ],
 "method": "open_next_chest"
+}, {
+"args": [  ],
+"method": "lindy_face_sterling"
 } ]
 }
 tracks/1/type = "transform"
@@ -73,7 +76,21 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/keys = PoolRealArray( 5.79, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 6.32, 1, 2.38419e-07, 2.83149, -1.30887, 0, 0, 0, 1, 1, 1, 1 )
+tracks/1/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 7.18, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 8.44, 1, 0, 2.5, 1.309, 0, 0, 0, 1, 1, 1, 1, 8.99, 1, 0, 2.5, 1.309, 0, 0, 0, 1, 1, 1, 1, 10.01, 1, -3.52293, 3.08982, 1.77702, 0, -0.726838, 0, 0.686808, 1, 1, 1 )
+tracks/2/type = "transform"
+tracks/2/path = NodePath("Sterling")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = PoolRealArray( 0.02, 1, -4.77774, -0.0799313, 2.25947, 0, 0.966794, 0, -0.255555, 1, 1, 1, 7.19, 1, -4.77774, -0.0799313, 2.25947, 0, -0.646344, 0, 0.763046, 1, 1, 1 )
+tracks/3/type = "transform"
+tracks/3/path = NodePath("Sterling/Mesh/HandR")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = PoolRealArray( 0.02, 1, -1, 1.11323, 0, 0, 0, 0, 1, 1, 1, 1, 8.52, 1, -0.27401, 2.05842, -1.32278, 0, 0, 0, 1, 1, 1, 1 )
 
 [sub_resource type="CapsuleShape" id=1]
 height = 3.85714
@@ -134,7 +151,7 @@ tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.5, 1, 0, 0,
 script = ExtResource( 1 )
 
 [node name="Heaven" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.1492, -11.1007 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.415155, 0.994289, -14.6066 )
 script = ExtResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Heaven"]
@@ -147,7 +164,7 @@ spot_range = 40.772
 spot_angle = 86.28
 
 [node name="Sterling" type="StaticBody" parent="Heaven"]
-transform = Transform( -0.869383, 0, -0.494139, 0, 1, 0, 0.494139, 0, -0.869383, -7.17744, -0.0799313, 0.449306 )
+transform = Transform( -0.839378, 0, -0.543547, 0, 1, 0, 0.543547, 0, -0.839378, -4.77774, -0.0799313, 2.25947 )
 script = ExtResource( 4 )
 
 [node name="Mesh" type="Spatial" parent="Heaven/Sterling"]
@@ -169,7 +186,7 @@ skeleton = NodePath("../../..")
 material/0 = null
 
 [node name="HandL" type="Spatial" parent="Heaven/Sterling/Mesh"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.11323, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.113, 0 )
 
 [node name="Hand" type="MeshInstance" parent="Heaven/Sterling/Mesh/HandL"]
 transform = Transform( 0.048, 0, 0, 0, 0.048, 0, 0, 0, 0.048, 0, -0.1, 0 )
@@ -178,7 +195,7 @@ skeleton = NodePath("../../..")
 material/0 = null
 
 [node name="HandR" type="Spatial" parent="Heaven/Sterling/Mesh"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.11323, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.97096, 1.15104, -0.0529112 )
 
 [node name="Hand" type="MeshInstance" parent="Heaven/Sterling/Mesh/HandR"]
 transform = Transform( 0.048, 0, 0, 0, 0.048, 0, 0, 0, 0.048, 0, -0.1, 0 )
@@ -194,16 +211,15 @@ shape = SubResource( 1 )
 anims/Idle = SubResource( 2 )
 
 [node name="Ring" parent="Heaven" instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 2.83149, -1.30887 )
 
 [node name="Interactor" type="StaticBody" parent="Heaven"]
+transform = Transform( -0.521531, 0, 0.853232, 0, 1, 0, -0.853232, 0, -0.521531, 0, 0, 0 )
 script = ExtResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Heaven/Interactor"]
 shape = SubResource( 12 )
 
 [node name="RussianDoll" type="Spatial" parent="Heaven"]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="ChestHeaven" parent="Heaven/RussianDoll" instance=ExtResource( 8 )]
 
@@ -243,8 +259,14 @@ transform = Transform( 0.31381, 0, 0, 0, 0.31381, 0, 0, 0, 0.31381, 0, 0, 0 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Heaven"]
 stream = ExtResource( 11 )
 
+[node name="LindyPosition" type="Position3D" parent="Heaven"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 2.5751 )
+
+[node name="LindyPosition2" type="Position3D" parent="Heaven"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.57628e-07, 0, 2.5751 )
+
 [node name="LindySpawnPoint" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0262998, 10.3215, -17.6102 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0262998, 2.78176, -6.04502 )
 
 [node name="PortalLocation" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13642, 1.8065, 12.4543 )
