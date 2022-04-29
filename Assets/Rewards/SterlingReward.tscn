@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Vox/SterlingHead.vox" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Vox/Hand.vox" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Vox/SterlingShirt.vox" type="ArrayMesh" id=3]
+[ext_resource path="res://Scripts/SterlingRewardAnimation.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Reward.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+loop = true
+step = 0.05
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Mesh/HandL")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0.5, 1, 1, 1.43652, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1 )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Mesh/HandR")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray( 0, 1, -1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0.5, 1, -1, 1.43652, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, -1, 1, 0, 0, 0, 0, 1, 1, 1, 1 )
+
+[node name="SterlingReward" type="Spatial"]
+script = ExtResource( 5 )
+reward_type = 6
+reward_name = "A Chief Chump"
+reward_description = "The chiefest of chiefs. 
+The sexiest of beasts. 
+Sterling Long."
+
+[node name="Mesh" type="Spatial" parent="."]
+transform = Transform( -0.2, 0, -3.01992e-08, 0, 0.2, 0, 3.01992e-08, 0, -0.2, 0, -0.436173, 0 )
+
+[node name="Torso" type="Spatial" parent="Mesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50128, 0 )
+
+[node name="SterlingHead" type="MeshInstance" parent="Mesh/Torso"]
+transform = Transform( 0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0, 1.50512, 0 )
+mesh = ExtResource( 1 )
+skeleton = NodePath("../../..")
+material/0 = null
+
+[node name="SterlingShirt" type="MeshInstance" parent="Mesh/Torso"]
+transform = Transform( 0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0, 0, 0 )
+mesh = ExtResource( 3 )
+skeleton = NodePath("../../..")
+material/0 = null
+
+[node name="HandL" type="Spatial" parent="Mesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0 )
+
+[node name="Hand" type="MeshInstance" parent="Mesh/HandL"]
+transform = Transform( 0.048, 0, 0, 0, 0.048, 0, 0, 0, 0.048, 0, -0.1, 0 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../..")
+material/0 = null
+
+[node name="HandR" type="Spatial" parent="Mesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0 )
+
+[node name="Hand" type="MeshInstance" parent="Mesh/HandR"]
+transform = Transform( 0.048, 0, 0, 0, 0.048, 0, 0, 0, 0.048, 0, -0.1, 0 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../..")
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 2 )
+script = ExtResource( 4 )

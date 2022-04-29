@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/titlescreen_butbetter.mp3-bd7efde41e9a03e601b5c894d0016a25.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/titlescreen_butbetter.mp3"
+dest_files=[ "res://.import/titlescreen_butbetter.mp3-bd7efde41e9a03e601b5c894d0016a25.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

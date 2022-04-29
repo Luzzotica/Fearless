@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/monster_growl1.mp3-f06f4d0d070780547a9d0a023618f2d8.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/monster_growl1.mp3"
+dest_files=[ "res://.import/monster_growl1.mp3-f06f4d0d070780547a9d0a023618f2d8.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

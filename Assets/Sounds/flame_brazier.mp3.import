@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/flame_brazier.mp3-269f537d530a7ed7e1adbd60698452fc.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/flame_brazier.mp3"
+dest_files=[ "res://.import/flame_brazier.mp3-269f537d530a7ed7e1adbd60698452fc.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

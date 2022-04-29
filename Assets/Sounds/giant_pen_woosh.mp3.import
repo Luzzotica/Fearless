@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/giant_pen_woosh.mp3-55c96a8e8305bc34c98a43f4d7c03efe.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/giant_pen_woosh.mp3"
+dest_files=[ "res://.import/giant_pen_woosh.mp3-55c96a8e8305bc34c98a43f4d7c03efe.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,18 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/WildflowerHouse.vox-43c11d8ad99b6024615ae730a879af63.mesh"
+
+[deps]
+
+source_file="res://Assets/Vox/WildflowerHouse.vox"
+dest_files=[ "res://.import/WildflowerHouse.vox-43c11d8ad99b6024615ae730a879af63.mesh" ]
+
+[params]
+
+mesh_mode=1
+origin_x=0
+origin_y=0
+origin_z=0
+voxel_size=0.5

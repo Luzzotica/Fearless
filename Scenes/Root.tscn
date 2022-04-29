@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Assets/Lindy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Level1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Root.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Level2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sounds/titlescreen_butbetter.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Fonts/DefaultTheme.tres" type="Theme" id=6]
+[ext_resource path="res://Assets/Fonts/Nunito-Bold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Scenes/Level3.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Level4.tscn" type="PackedScene" id=9]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 72
+font_data = ExtResource( 7 )
+
+[node name="Root" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.510905, 0, 0 )
+script = ExtResource( 3 )
+level1 = ExtResource( 2 )
+level2 = ExtResource( 4 )
+level3 = ExtResource( 8 )
+level4 = ExtResource( 9 )
+current_level = 4
+
+[node name="Lindy" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5992, 1.51126, 1.43425 )
+animation_state = "Idle"
+
+[node name="ResetZone" type="Area" parent="."]
+transform = Transform( 500, 0, 0, 0, 1, 0, 0, 0, 500, 0, -19.4006, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="ResetZone"]
+shape = SubResource( 1 )
+
+[node name="LevelSwapTimer" type="Timer" parent="."]
+wait_time = 1.1
+one_shot = true
+autostart = true
+
+[node name="HomeScreen" type="Spatial" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HomeScreen"]
+stream = ExtResource( 5 )
+volume_db = -5.0
+autoplay = true
+
+[node name="Camera" type="Camera" parent="HomeScreen"]
+transform = Transform( 1, 0, 0, 0, 0.894154, 0.447759, 0, -0.447759, 0.894154, 7.50695, 5.01792, 4.20412 )
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HomeScreen"]
+
+[node name="Control" type="Control" parent="HomeScreen/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Start" type="Button" parent="HomeScreen/CanvasLayer/Control"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -391.0
+margin_top = -61.0
+margin_right = -100.0
+margin_bottom = 3.0
+theme = ExtResource( 6 )
+text = "Start"
+
+[node name="Quit" type="Button" parent="HomeScreen/CanvasLayer/Control"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -391.0
+margin_top = 19.0
+margin_right = -100.0
+margin_bottom = 83.0
+theme = ExtResource( 6 )
+text = "Quit"
+
+[node name="Label" type="Label" parent="HomeScreen/CanvasLayer/Control"]
+anchor_right = 1.0
+margin_top = 5.0
+margin_bottom = 50.0
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 2 )
+text = "Fearless"
+align = 1
+valign = 1
+
+[connection signal="lindy_death" from="Lindy" to="." method="_on_Lindy_lindy_death"]
+[connection signal="body_entered" from="ResetZone" to="." method="_on_Area_body_entered"]
+[connection signal="timeout" from="LevelSwapTimer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="HomeScreen/CanvasLayer/Control/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="HomeScreen/CanvasLayer/Control/Quit" to="." method="_on_Quit_pressed"]

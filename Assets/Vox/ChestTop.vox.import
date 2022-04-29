@@ -1,0 +1,18 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/ChestTop.vox-75233ce3f4bf418b13769cd261073e15.mesh"
+
+[deps]
+
+source_file="res://Assets/Vox/ChestTop.vox"
+dest_files=[ "res://.import/ChestTop.vox-75233ce3f4bf418b13769cd261073e15.mesh" ]
+
+[params]
+
+mesh_mode=1
+origin_x=0
+origin_y=0
+origin_z=0
+voxel_size=0.5

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/gamethemeidea.mp3-607c7390ad038a92eaf4b49393165f3e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/gamethemeidea.mp3"
+dest_files=[ "res://.import/gamethemeidea.mp3-607c7390ad038a92eaf4b49393165f3e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

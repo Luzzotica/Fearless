@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Vox/3WeekContract.vox" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Vox/Checkmark.vox" type="ArrayMesh" id=2]
+[ext_resource path="res://Scripts/Reward.gd" type="Script" id=3]
+
+[node name="WeekContract" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
+script = ExtResource( 3 )
+reward_type = 2
+reward_name = "Behold, a 3 Week Contract"
+reward_description = "This is legally binding for the whole of 3 weeks... 
+But it will probably last longer."
+
+[node name="3WeekContract" type="MeshInstance" parent="."]
+transform = Transform( -0.02, 0, -3.01992e-09, 0, 0.02, 0, 3.01992e-09, 0, -0.02, 0.40918, -0.416009, -0.00294623 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="Checkmark" type="MeshInstance" parent="3WeekContract"]
+transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 27.2148, 11.9109, -0.313506 )
+mesh = ExtResource( 2 )
+material/0 = null

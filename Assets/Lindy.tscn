@@ -1,0 +1,470 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Assets/Vox/LindyTorso.vox" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Vox/Hand.vox" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Vox/LindyHead.vox" type="ArrayMesh" id=3]
+[ext_resource path="res://Scripts/Lindy.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Rewards/LindyWeapon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/RewardPopup.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Objectives.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/SterlingInteraction.gd" type="Script" id=8]
+[ext_resource path="res://Assets/Sounds/giant_pen_woosh.mp3" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Sounds/giant_pen_smack.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Sounds/fireball_throw.mp3" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Fonts/Nunito-Bold.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Assets/Rewards/FireGauntlet.tscn" type="PackedScene" id=13]
+
+[sub_resource type="Animation" id=24]
+resource_name = "Display"
+length = 0.5
+step = 0.05
+tracks/0/type = "transform"
+tracks/0/path = NodePath("../../../LindyHead")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 1.8, 0, 0, 0, 0, 1, 0.03, 0.03, 0.03, 0.5, 1, 0, 1.8, 0, 0.2, 0, 0, 1, 0.03, 0.03, 0.03 )
+
+[sub_resource type="Animation" id=29]
+resource_name = "DisplayMoveCamera"
+length = 2.0
+step = 0.05
+tracks/0/type = "transform"
+tracks/0/path = NodePath("../Camera")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0.7, -2.4, 0, 0, 0, 1, 1, 1, 1, 2, 1, 2.10108e-07, 0.709156, -2.40335, -8.52767e-09, 0.980785, 0.19509, 4.28715e-08, 1, 1, 1 )
+
+[sub_resource type="Animation" id=30]
+resource_name = "DisplayResetCamera"
+length = 2.0
+tracks/0/type = "transform"
+tracks/0/path = NodePath("../Camera")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 2.10108e-07, 0.709156, -2.40335, -8.52767e-09, 0.980785, 0.19509, 4.28715e-08, 1, 1, 1, 1, 1, 2.10108e-07, 0.709156, -2.40335, 0, 0, 0, 1, 1, 1, 1, 2, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=26]
+resource_name = "Idle"
+length = 2.0
+loop = true
+
+[sub_resource type="Animation" id=27]
+resource_name = "Ready"
+
+[sub_resource type="Animation" id=34]
+resource_name = "FadeVignetteIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../../../CanvasLayer/BlackVignette:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=35]
+resource_name = "FadeVignetteOut"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../../../CanvasLayer/BlackVignette:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "Display"
+length = 0.5
+step = 0.05
+tracks/0/type = "transform"
+tracks/0/path = NodePath("HandL")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -0.3, 2, -0.75, 0, 0, 0, 1, 1, 1, 1, 0.5, 1, -0.3, 2.75, -0.45, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "HitLeft"
+length = 0.5
+step = 0.01
+tracks/0/type = "transform"
+tracks/0/path = NodePath("HandL")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -0.3, 2, -0.75, 0, 0, 0, 1, 1, 1, 1, 0.12, 1, -0.3, 2.4, -0.75, 0.258819, 0, 0, 0.965926, 1, 1, 1, 0.35, 1, -0.3, 1.5, -0.75, -0.258819, 0, 0, 0.965926, 1, 1, 1, 0.5, 1, -0.3, 2, -0.75, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "Idle"
+length = 2.0
+loop = true
+tracks/0/type = "transform"
+tracks/0/path = NodePath("HandL")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -1, 1.5, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, -1, 1.25, 0, 0, 0, 0, 1, 1, 1, 1, 2, 1, -1, 1.5, 0, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "Ready"
+tracks/0/type = "transform"
+tracks/0/path = NodePath("HandL")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -0.3, 2, -0.75, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "ShootRight"
+length = 0.5
+step = 0.01
+tracks/0/type = "transform"
+tracks/0/path = NodePath("HandR")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0.3, 2, -0.75, 0, 0, 0, 1, 1, 1, 1, 0.2, 1, 0.3, 2, -1, 0, 0, 0, 1, 1, 1, 1, 0.5, 1, 0.3, 2, -0.75, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=28]
+resource_name = "Display"
+length = 0.5
+step = 0.05
+tracks/0/type = "transform"
+tracks/0/path = NodePath("HandR")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0.3, 2, -0.75, 0, 0, 0, 1, 1, 1, 1, 0.5, 1, 0.3, 2.75, -0.45, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "HitLeft"
+length = 0.5
+step = 0.01
+tracks/0/type = "transform"
+tracks/0/path = NodePath("HandL")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -0.3, 2, -0.75, 0, 0, 0, 1, 1, 1, 1, 0.12, 1, -0.3, 2.4, -0.75, 0.258819, 0, 0, 0.965926, 1, 1, 1, 0.35, 1, -0.3, 1.5, -0.75, -0.258819, 0, 0, 0.965926, 1, 1, 1, 0.5, 1, -0.3, 2, -0.75, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=11]
+resource_name = "Idle"
+length = 2.0
+loop = true
+tracks/0/type = "transform"
+tracks/0/path = NodePath("HandR")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 1, 1.5, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1.25, 0, 0, 0, 0, 1, 1, 1, 1, 2, 1, 1, 1.5, 0, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "Ready"
+tracks/0/type = "transform"
+tracks/0/path = NodePath("HandR")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0.3, 2, -0.75, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=13]
+resource_name = "ShootRight"
+length = 0.5
+step = 0.01
+tracks/0/type = "transform"
+tracks/0/path = NodePath("HandR")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0.3, 2, -0.75, 0, 0, 0, 1, 1, 1, 1, 0.2, 1, 0.3, 2, -1, 0, 0, 0, 1, 1, 1, 1, 0.5, 1, 0.3, 2, -0.75, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.694538
+height = 2.67113
+
+[sub_resource type="DynamicFont" id=33]
+size = 72
+font_data = ExtResource( 12 )
+
+[node name="Lindy" type="KinematicBody"]
+script = ExtResource( 4 )
+
+[node name="Mesh" type="Spatial" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.617659, 0 )
+
+[node name="Animations" type="AnimationPlayer" parent="Mesh"]
+root_node = NodePath("../Torso/CameraPosition/Hands")
+anims/Display = SubResource( 24 )
+anims/DisplayMoveCamera = SubResource( 29 )
+anims/DisplayResetCamera = SubResource( 30 )
+anims/Idle = SubResource( 26 )
+anims/Ready = SubResource( 27 )
+
+[node name="UIAnimations" type="AnimationPlayer" parent="Mesh"]
+root_node = NodePath("../Torso/CameraPosition/Hands")
+anims/FadeVignetteIn = SubResource( 34 )
+anims/FadeVignetteOut = SubResource( 35 )
+
+[node name="HandLAnimations" type="AnimationPlayer" parent="Mesh"]
+root_node = NodePath("../Torso/CameraPosition/Hands")
+anims/Display = SubResource( 23 )
+anims/HitLeft = SubResource( 6 )
+anims/Idle = SubResource( 7 )
+anims/Ready = SubResource( 8 )
+anims/ShootRight = SubResource( 9 )
+
+[node name="HandRAnimations" type="AnimationPlayer" parent="Mesh"]
+root_node = NodePath("../Torso/CameraPosition/Hands")
+anims/Display = SubResource( 28 )
+anims/HitLeft = SubResource( 10 )
+anims/Idle = SubResource( 11 )
+anims/Ready = SubResource( 12 )
+anims/ShootRight = SubResource( 13 )
+
+[node name="Torso" type="Spatial" parent="Mesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.239008, 0 )
+
+[node name="LindyHead" type="MeshInstance" parent="Mesh/Torso"]
+transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 1.8, 0 )
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="LindyTorso" type="MeshInstance" parent="Mesh/Torso"]
+transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0 )
+mesh = ExtResource( 1 )
+skeleton = NodePath("../../../..")
+material/0 = null
+
+[node name="CameraPosition" type="Spatial" parent="Mesh/Torso"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.31371, 0 )
+
+[node name="Hands" type="Spatial" parent="Mesh/Torso/CameraPosition"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.55272, 0 )
+
+[node name="HandR" type="Spatial" parent="Mesh/Torso/CameraPosition/Hands"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 2.75, -0.45 )
+
+[node name="RangedAttack" type="AudioStreamPlayer3D" parent="Mesh/Torso/CameraPosition/Hands/HandR"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.3, -3.36766, 0.45 )
+stream = ExtResource( 11 )
+unit_db = -5.0
+
+[node name="Hand" type="MeshInstance" parent="Mesh/Torso/CameraPosition/Hands/HandR"]
+transform = Transform( 0.046, 0, 0, 0, 0.046, 0, 0, 0, 0.046, 0, -0.0999999, 0 )
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="FireGauntlet" parent="Mesh/Torso/CameraPosition/Hands/HandR" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.000756115, 0.0196307, -0.00443247 )
+
+[node name="HandL" type="Spatial" parent="Mesh/Torso/CameraPosition/Hands"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 2, -0.75 )
+
+[node name="MeleeHit" type="AudioStreamPlayer3D" parent="Mesh/Torso/CameraPosition/Hands/HandL"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.3, -3.36766, 0.45 )
+stream = ExtResource( 10 )
+unit_db = -3.0
+
+[node name="MeleeMiss" type="AudioStreamPlayer3D" parent="Mesh/Torso/CameraPosition/Hands/HandL"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.3, -3.36766, 0.45 )
+stream = ExtResource( 9 )
+unit_db = -3.0
+
+[node name="Hand" type="MeshInstance" parent="Mesh/Torso/CameraPosition/Hands/HandL"]
+transform = Transform( 0.046, 0, 0, 0, 0.046, 0, 0, 0, 0.046, 0, -0.1, 0 )
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="LindyWeapon" parent="Mesh/Torso/CameraPosition/Hands/HandL" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0.103583, 0 )
+
+[node name="Camera" type="Camera" parent="Mesh/Torso/CameraPosition"]
+current = true
+near = 0.4
+
+[node name="DisplayLocation" type="Spatial" parent="Mesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24095e-08, 3.20321, -0.256335 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.81861, 0 )
+shape = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlackVignette" type="Panel" parent="CanvasLayer"]
+self_modulate = Color( 0, 0, 0, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VignetteLabel" type="Label" parent="CanvasLayer/BlackVignette"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 33 )
+align = 1
+valign = 1
+
+[node name="Base" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CursorText" type="Label" parent="CanvasLayer/Base"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -17.0
+margin_bottom = 16.0
+align = 1
+valign = 1
+
+[node name="RewardPopup" type="Panel" parent="CanvasLayer/Base"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.501961 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 399.0
+script = ExtResource( 6 )
+
+[node name="Align" type="VBoxContainer" parent="CanvasLayer/Base/RewardPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 400.0
+margin_right = -400.0
+alignment = 1
+
+[node name="Name" type="Label" parent="CanvasLayer/Base/RewardPopup/Align"]
+margin_top = 68.0
+margin_right = 224.0
+margin_bottom = 82.0
+align = 1
+
+[node name="Description" type="Label" parent="CanvasLayer/Base/RewardPopup/Align"]
+margin_top = 86.0
+margin_right = 224.0
+margin_bottom = 100.0
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Base/RewardPopup/Align"]
+margin_top = 104.0
+margin_right = 224.0
+margin_bottom = 108.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Base/RewardPopup/Align"]
+margin_top = 112.0
+margin_right = 224.0
+margin_bottom = 132.0
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Base/RewardPopup/Align/HBoxContainer"]
+margin_left = 77.0
+margin_right = 146.0
+margin_bottom = 20.0
+text = "I Accept!"
+
+[node name="SterlingInteraction" type="Panel" parent="CanvasLayer/Base"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.501961 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+
+[node name="Align" type="VBoxContainer" parent="CanvasLayer/Base/SterlingInteraction"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 400.0
+margin_right = -400.0
+alignment = 1
+
+[node name="Sterling" type="Label" parent="CanvasLayer/Base/SterlingInteraction/Align"]
+margin_top = 265.0
+margin_right = 224.0
+margin_bottom = 279.0
+text = "Sterling: I like your glasses"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Base/SterlingInteraction/Align"]
+margin_top = 283.0
+margin_right = 224.0
+margin_bottom = 287.0
+
+[node name="Correct" type="Button" parent="CanvasLayer/Base/SterlingInteraction/Align"]
+margin_top = 291.0
+margin_right = 224.0
+margin_bottom = 311.0
+text = "Hip replacements and kneecaps!"
+
+[node name="Incorrect" type="Button" parent="CanvasLayer/Base/SterlingInteraction/Align"]
+margin_top = 315.0
+margin_right = 224.0
+margin_bottom = 335.0
+text = "..."
+
+[node name="Objectives" type="Panel" parent="CanvasLayer/Base"]
+self_modulate = Color( 1, 1, 1, 0.505882 )
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 300.0
+margin_bottom = 150.0
+script = ExtResource( 7 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Base/Objectives"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Base/Objectives/VBoxContainer"]
+margin_right = 295.0
+margin_bottom = 14.0
+text = "Objectives"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Base/Objectives/VBoxContainer"]
+margin_top = 18.0
+margin_right = 295.0
+margin_bottom = 22.0
+
+[node name="Objectives" type="Label" parent="CanvasLayer/Base/Objectives/VBoxContainer"]
+margin_top = 26.0
+margin_right = 295.0
+margin_bottom = 40.0
+text = "Objectives"
+autowrap = true
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Base"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 36.0
+value = 50.0
+
+[node name="SoundPlayers" type="Spatial" parent="."]
+
+[connection signal="animation_finished" from="Mesh/UIAnimations" to="." method="_on_Animations_animation_finished"]
+[connection signal="handle_reward" from="CanvasLayer/Base/RewardPopup" to="." method="_on_RewardPopup_handle_reward"]
+[connection signal="pressed" from="CanvasLayer/Base/RewardPopup/Align/HBoxContainer/Button" to="CanvasLayer/Base/RewardPopup" method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Base/SterlingInteraction/Align/Correct" to="CanvasLayer/Base/SterlingInteraction" method="_on_Correct_pressed"]
+[connection signal="pressed" from="CanvasLayer/Base/SterlingInteraction/Align/Incorrect" to="CanvasLayer/Base/SterlingInteraction" method="_on_Incorrect_pressed"]

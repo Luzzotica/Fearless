@@ -1,0 +1,18 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/SpellbreakFireGauntlet.vox-86cbae71d5339d74b2e754c17eb00796.mesh"
+
+[deps]
+
+source_file="res://Assets/Vox/SpellbreakFireGauntlet.vox"
+dest_files=[ "res://.import/SpellbreakFireGauntlet.vox-86cbae71d5339d74b2e754c17eb00796.mesh" ]
+
+[params]
+
+mesh_mode=1
+origin_x=0
+origin_y=0
+origin_z=0
+voxel_size=0.5

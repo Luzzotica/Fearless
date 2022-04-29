@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Vox/LindyRing.vox" type="ArrayMesh" id=1]
+[ext_resource path="res://Scripts/Reward.gd" type="Script" id=2]
+
+[node name="Ring" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Root" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.162233, 0 )
+
+[node name="LindyRing" type="MeshInstance" parent="Root"]
+transform = Transform( -1.31134e-09, 0, 0.03, 0, 0.03, 0, -0.03, 0, -1.31134e-09, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null

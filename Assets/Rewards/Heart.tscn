@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Vox/Heart.vox" type="ArrayMesh" id=1]
+[ext_resource path="res://Scripts/Reward.gd" type="Script" id=2]
+
+[node name="Heart" type="Spatial"]
+script = ExtResource( 2 )
+reward_type = 8
+reward_name = "Behold, a heart!"
+reward_description = "A piece of Sterling's heart.
+Treat it with care."
+
+[node name="Sizer" type="Spatial" parent="."]
+transform = Transform( 0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0, -0.255692, 0 )
+
+[node name="Heart" type="MeshInstance" parent="Sizer"]
+mesh = ExtResource( 1 )
+skeleton = NodePath("../..")
+material/0 = null

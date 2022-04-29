@@ -1,0 +1,18 @@
+[remap]
+
+importer="VoxelCore.MeshOfVoxels"
+type="Mesh"
+path="res://.import/Heart.vox-44f058f997e5be4795ec691e22837dc0.mesh"
+
+[deps]
+
+source_file="res://Assets/Vox/Heart.vox"
+dest_files=[ "res://.import/Heart.vox-44f058f997e5be4795ec691e22837dc0.mesh" ]
+
+[params]
+
+mesh_mode=1
+origin_x=0
+origin_y=0
+origin_z=0
+voxel_size=0.5

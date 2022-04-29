@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Reward.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Vox/WomanSelfDefenseWeapon.vox" type="ArrayMesh" id=2]
+
+[node name="LindyWeapon" type="Spatial"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+script = ExtResource( 1 )
+reward_type = 1
+reward_name = "Self Defense Weapon"
+reward_description = "Stabby Stab!"
+in_chest_offset = Vector3( 0.35, 0, 0 )
+in_chest_rotation = Vector3( 0, -90, 0 )
+
+[node name="Mesh" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="WomanSelfDefenseWeapon" type="MeshInstance" parent="Mesh"]
+transform = Transform( 0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -0.334, -0.05, 0 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../..")
+material/0 = null

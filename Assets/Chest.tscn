@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Vox/ChestBottom.vox" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Vox/ChestTop.vox" type="ArrayMesh" id=2]
+[ext_resource path="res://Scripts/Chest.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sounds/chest_open.mp3" type="AudioStream" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Open"
+length = 0.3
+step = 0.01
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Mesh/Hinge")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 2.84217e-14, 4.5, 3.5, 0, 7.10545e-15, 0, 1, 1, 1, 1, 0.22, 1, 1.98952e-13, 4.5, 3.5, 0.490911, 1.42727e-14, 4.29169e-08, 0.87121, 1, 1, 1, 0.3, 1, 2.84217e-13, 4.5, 3.5, 0.423409, 1.56863e-14, 3.70157e-08, 0.905939, 1, 1, 1 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1.31148, 0.814931, 0.70163 )
+
+[node name="Chest" type="StaticBody" groups=["Chests"]]
+script = ExtResource( 3 )
+type = 1
+
+[node name="Mesh" type="Spatial" parent="."]
+transform = Transform( -0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 0, 0, 0 )
+
+[node name="ChestBottom" type="MeshInstance" parent="Mesh"]
+mesh = ExtResource( 1 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="Hinge" type="Spatial" parent="Mesh"]
+transform = Transform( 1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 4.5, 3.5 )
+
+[node name="ChestTop" type="MeshInstance" parent="Mesh/Hinge"]
+transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 0, -3.5 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../..")
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Open = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.789628, 0 )
+shape = SubResource( 2 )
+
+[node name="ObjectPosition" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1058, 0.164357 )
+
+[node name="CameraPosition" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, -2.38419e-07, 2.2163, 2.2909 )
+
+[node name="Open" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49021, 0 )
+stream = ExtResource( 4 )
+unit_db = -5.0

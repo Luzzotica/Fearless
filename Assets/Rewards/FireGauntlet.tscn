@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Vox/SpellbreakFireGauntlet.vox" type="ArrayMesh" id=1]
+[ext_resource path="res://Scripts/Reward.gd" type="Script" id=2]
+
+[node name="FireGauntlet" type="Spatial"]
+script = ExtResource( 2 )
+reward_name = "The Fire Gauntlet"
+reward_description = "This thing blasts things off and sets things on fire.
+Sounds like a shotgun.
+Enjoy!"
+
+[node name="Root" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0556118, -0.13, 0 )
+
+[node name="SpellbreakFireGauntlet" type="MeshInstance" parent="Root"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null

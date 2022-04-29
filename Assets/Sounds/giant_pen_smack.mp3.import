@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/giant_pen_smack.mp3-32d95a9dd0a8ff7f67a8081f5bc259ee.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/giant_pen_smack.mp3"
+dest_files=[ "res://.import/giant_pen_smack.mp3-32d95a9dd0a8ff7f67a8081f5bc259ee.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
