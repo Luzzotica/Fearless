@@ -9,6 +9,7 @@ onready var lindy_spawn_point: Spatial = $LindySpawnPoint
 onready var portal_location: Spatial = $PortalLocation
 
 signal objectives_update(objectives)
+signal stop_music()
 
 func _ready():
 	Globals.lindy.connect("reward_acquired", self, "_on_reward_acquired")

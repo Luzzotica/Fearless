@@ -6,6 +6,7 @@ onready var spawn_point_holder: Spatial = $SpawnPoints
 onready var spawn_timer: Timer = $EnemySpawnTimer
 onready var black_void = $BlackVoid
 onready var heaven = $Heaven
+onready var end_game_chest_interactor = $Heaven/Interactor
 
 var spawn_points: Array = []
 
@@ -29,6 +30,8 @@ func _ready():
 	brazier_light_count = len(children)
 	for child in children:
 		child.connect("brazier_lit", self, "_on_brazier_lit")
+	
+	emit_signal("objectives_update", get_level_objectives())
 
 
 func _on_reward_acquired(reward_type):
@@ -47,7 +50,7 @@ func _on_correct_response():
 	
 	Globals.sterling_interaction.set_interaction_text("Open the chest, it will all be worth it =)", "=D", "=O")
 	
-	$Heaven/AnimationPlayer.play("BringInChest")
+	end_game_chest_interactor.interactable = true
 	
 	._on_correct_response()
 	
@@ -126,5 +129,6 @@ func _on_EnemySpawnTimer_timeout():
 
 func _on_KillEnemies_body_entered(body):
 	if Globals.lindy == body:
+		emit_signal("stop_music")
 		spawn_timer.stop()
 		kill_enemies()

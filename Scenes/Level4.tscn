@@ -266,7 +266,7 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 2
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.57628e-07, 0, 2.5751 )
 
 [node name="LindySpawnPoint" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0262998, 2.78176, -6.04502 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.579568, 10.3092, -15.8748 )
 
 [node name="PortalLocation" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13642, 1.8065, 12.4543 )

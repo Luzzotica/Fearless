@@ -49,8 +49,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5621, 7.28643, -4.36302 )
 transform = Transform( -4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -9.2512, 0.447301, -0.130962 )
 type = 8
 
+[node name="Chest2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.994825, 2.00119, 7.06445 )
+type = 8
+
 [node name="SpellbreakSphere" type="MeshInstance" parent="."]
-transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -4.71119, 1.70486, 0.462296 )
+transform = Transform( 0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -4.71119, 2.67153, 0.462296 )
 mesh = ExtResource( 2 )
 skeleton = NodePath("../SpellbreakLevel")
 material/0 = null

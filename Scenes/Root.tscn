@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Lindy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Level1.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Fonts/Nunito-Bold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Scenes/Level3.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Level4.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Sounds/haloish.mp3" type="AudioStream" id=10]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -23,7 +24,6 @@ level1 = ExtResource( 2 )
 level2 = ExtResource( 4 )
 level3 = ExtResource( 8 )
 level4 = ExtResource( 9 )
-current_level = 4
 
 [node name="Lindy" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5992, 1.51126, 1.43425 )
@@ -46,6 +46,10 @@ autostart = true
 stream = ExtResource( 5 )
 volume_db = -5.0
 autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="HomeScreen"]
+stream = ExtResource( 10 )
+volume_db = -5.0
 
 [node name="Camera" type="Camera" parent="HomeScreen"]
 transform = Transform( 1, 0, 0, 0, 0.894154, 0.447759, 0, -0.447759, 0.894154, 7.50695, 5.01792, 4.20412 )

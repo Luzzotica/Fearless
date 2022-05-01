@@ -1,6 +1,6 @@
 extends StaticBody
 
-var interactable = true
+var interactable = false
 
 signal interacted()
 

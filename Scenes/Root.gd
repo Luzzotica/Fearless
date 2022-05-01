@@ -32,13 +32,14 @@ export(LevelSelect) var current_level = LevelSelect.LEVEL1
 onready var level_swap_timer: Timer = $LevelSwapTimer
 onready var home_screen_ui: Control = $HomeScreen/CanvasLayer/Control
 onready var home_screen_camera: Camera = $HomeScreen/Camera
+onready var basic_music_player = $HomeScreen/AudioStreamPlayer
+onready var haloish_music_player = $HomeScreen/AudioStreamPlayer2
 
 var wait_time_long = 5
 var wait_time_short = 1.1
 
 func _ready():
 	setup_current_level()
-#	Globals.level = $Level1
 	reset_lindy()
 
 
@@ -103,14 +104,24 @@ func reset_lindy():
 
 func setup_current_level():
 	if current_level == LevelSelect.LEVEL1:
+		basic_music_player.play()
 		Globals.level = level1.instance()
 	if current_level == LevelSelect.LEVEL2:
 		Globals.level = level2.instance()
 	if current_level == LevelSelect.LEVEL3:
+		basic_music_player.stop()
+		haloish_music_player.play()
 		Globals.level = level3.instance()
 	if current_level == LevelSelect.LEVEL4:
 		Globals.level = level4.instance()
+	Globals.level.connect("stop_music", self, "_on_stop_music")
 	add_child(Globals.level)
+
+
+func _on_stop_music():
+	
+	basic_music_player.stop()
+	haloish_music_player.stop()
 
 
 func reset_game():
